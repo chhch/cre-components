@@ -1,0 +1,12 @@
+rootProject.name = 'cre-components'
+
+includeBuild '../cre-commons'
+include 'customEventSenderComponent'
+include 'helloComponent'
+include 'helloComponentWithLogger'
+include 'pingComponent'
+include 'pongComponent'
+include 'customEventReceiverComponent'
+include 'componentComposition'
+include 'componentWithScope'
+include 'util'

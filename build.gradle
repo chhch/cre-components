@@ -1,0 +1,51 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.2.40" apply false
+    id 'com.github.johnrengelman.plugin-shadow' version '2.0.3' apply false
+}
+
+configure(subprojects.findAll { it != project(":util") }) {
+
+    apply plugin: 'application'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    shadowJar {
+        def folder = file('../../component-runtime/src/test/resources/')
+        manifest {
+            if (folder.exists()) {
+                destinationDir = folder
+            }
+            attributes 'Description': 'This is an example component'
+        }
+    }
+
+    dependencies {
+        compile project(":util")
+    }
+}
+
+
+subprojects {
+
+    group 'io.github.chhch'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'kotlin'
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    dependencies {
+        compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+        compile "io.github.chhch:cre-commons:1.0-SNAPSHOT"
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+
+}

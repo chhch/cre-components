@@ -1,0 +1,5 @@
+mainClassName = 'io.github.chhch.components.composition.ComponentComposition'
+
+dependencies {
+    compile project (":componentWithScope")
+}
