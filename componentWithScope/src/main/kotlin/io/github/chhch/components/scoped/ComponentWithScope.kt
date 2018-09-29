@@ -18,13 +18,9 @@ class ComponentWithScope @Inject constructor(private val logger: Logger) {
         }
     }
 
-    init {
-        start()
-    }
-
     @Start
     fun start() {
-        printClassLoaders(logger, this, logger)
+        logger.sendLog("Hello from ComponentWithScope")
     }
 
     @Stop

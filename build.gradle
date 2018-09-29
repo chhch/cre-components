@@ -9,7 +9,7 @@ configure(subprojects.findAll { it != project(":util") }) {
     apply plugin: 'com.github.johnrengelman.shadow'
 
     shadowJar {
-        def folder = file('../../component-runtime/src/test/resources/')
+        def folder = file('../../cre-component-runtime/src/test/resources/')
         manifest {
             if (folder.exists()) {
                 destinationDir = folder

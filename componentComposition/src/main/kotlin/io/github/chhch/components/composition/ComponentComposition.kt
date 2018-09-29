@@ -25,16 +25,17 @@ class ComponentComposition @Inject constructor(private val logger: Logger) {
     lateinit var toInject: ComponentWithScope
 
     init {
-        start()
+        logger.sendLog("Set scope to IN_PRODUCTION or UNDER_INSPECTION to inject component")
     }
 
     @Start
     fun start() {
         try {
-            printClassLoaders(logger, this, logger, toInject)
+            printClassLoaders(logger, this, toInject)
             toInject.start()
+            logger.sendLog("Component was successfully injected")
         } catch (e: UninitializedPropertyAccessException) {
-            logger.sendLog("Property was not injected")
+            logger.sendLog("Component was not injected")
         }
     }
 

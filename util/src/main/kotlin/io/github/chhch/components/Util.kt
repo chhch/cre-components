@@ -20,7 +20,6 @@ class EventDummy : Event<Any> {
 }
 
 fun printClassLoaders(logger: Logger?, vararg objects: Any) = objects.map { it::class.java }
-                .plus(listOf(Any::class.java, Start::class.java))
                 .forEach {
                     val message = "${it.name} was loaded with class loader '${it.classLoader}'"
                     logger?.sendLog(message) ?: println(message)
